@@ -4,12 +4,14 @@ import com.codetally.repository.BaseRepository;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 import java.sql.Connection;
 import java.sql.Statement;
 
 /**
  * Created by greg on 29/08/17.
  */
+@WebListener
 public class ServletContextInitialization  implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
