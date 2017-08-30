@@ -25,6 +25,7 @@ public class MeController extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String token="";
         for (Cookie cookie : req.getCookies()) {
+            System.out.println("Cookie name: " + cookie.getName() + ", and value: " + cookie.getValue() );
             if (cookie.getName().equalsIgnoreCase("X-AUTH-TOKEN")) {
                 token=cookie.getValue();
                 break;
