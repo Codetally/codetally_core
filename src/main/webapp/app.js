@@ -18,7 +18,7 @@ DemoApp.controller('DemoCtrl', function($scope, $routeParams, $location, DataRes
 	$interval.cancel($rootScope.interval_promise);
 
 	if (!$rootScope.authenticated) {
-		DataResource.get({datatype:"me.cgi"}, function(data) {
+		DataResource.get({datatype:"me"}, function(data) {
 			$rootScope.userdata = data;
 			$rootScope.authenticated = true;
 			DataResource.query({datatype:"repos", id:$rootScope.userdata.login}, function(repos) {
