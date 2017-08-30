@@ -14,7 +14,7 @@ import java.io.IOException;
  * Created by greg on 29/08/17.
  */
 
-@WebServlet(value="/config")
+@WebServlet(value="/config/*")
 public class ConfigController extends HttpServlet {
     private ChargeService chargeService;
 

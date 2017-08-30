@@ -14,7 +14,7 @@ import java.io.IOException;
  * Created by greg on 29/08/17.
  */
 
-@WebServlet(value="/repos")
+@WebServlet(value="/repos/*")
 public class RepositoryController extends HttpServlet {
     private RepositoryService repositoryService;
 

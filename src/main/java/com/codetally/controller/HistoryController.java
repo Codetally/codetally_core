@@ -13,7 +13,7 @@ import java.io.IOException;
  * Created by greg on 29/08/17.
  */
 
-@WebServlet(value="/history")
+@WebServlet(value="/history/*")
 public class HistoryController extends HttpServlet {
     private CommitService commitService;
 

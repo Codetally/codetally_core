@@ -15,7 +15,7 @@ import java.net.HttpURLConnection;
  * Created by greg on 29/08/17.
  */
 
-@WebServlet(value="/shield")
+@WebServlet(value="/shield/*")
 public class ShieldController extends HttpServlet {
     private ShieldService shieldService;
 

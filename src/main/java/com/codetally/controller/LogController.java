@@ -14,7 +14,7 @@ import java.io.IOException;
  * Created by greg on 29/08/17.
  */
 
-@WebServlet(value="/log")
+@WebServlet(value="/log/*")
 public class LogController extends HttpServlet {
     private LogService logService;
 

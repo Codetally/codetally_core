@@ -15,7 +15,7 @@ import java.net.HttpURLConnection;
  * Created by greg on 29/08/17.
  */
 
-@WebServlet(value="/commits")
+@WebServlet(value="/commits/*")
 public class CommitController extends HttpServlet {
     private CommitService commitService;
 
