@@ -30,6 +30,7 @@ public class ServletContextInitialization  implements ServletContextListener {
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS logline (logid bigserial primary key,level character varying(255),message text,\"timestamp\" character varying(255),repoid bigint)");
             System.out.println("Creating Table repo");
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS repo (repoid bigserial primary key,owner character varying(255),repo_name character varying(1024),codecost numeric(19,2),currency_code character varying(3),repo_url text)");
+            System.out.println("Create table complete.");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
