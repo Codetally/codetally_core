@@ -25,7 +25,7 @@ public class ServletContextInitialization  implements ServletContextListener {
             System.out.println("Creating Table commit_files");
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS commit_files (sha text, filepath text, file_action integer)");
             System.out.println("Creating Table commits");
-            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS commits (sha character varying(255), author_name character varying(255), author_email character varying(255),message text, commit_date character varying(255), repoid bigint, codecost numeric(19,2), elapsed_time character varying(25), commitid bigint NOT NULL, commit_url text, calculation_date character varying(255))");
+            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS commits (sha character varying(255), author_name character varying(255), author_email character varying(255),message text, commit_date character varying(255), repoid bigint, codecost numeric(19,2), elapsed_time character varying(25), commitid bigserial primary key, commit_url text, calculation_date character varying(255))");
             System.out.println("Creating Table hourly_rates");
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS hourly_rates (author_email character varying(1024), hourly_rate numeric(19,2), description text, repoid bigint)");
             System.out.println("Creating Table logline");
