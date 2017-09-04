@@ -1,7 +1,8 @@
 package com.codetally.controller;
 
-import com.codetally.service.LogService;
+import com.codetally.model.ShieldCost;
 import com.codetally.service.ShieldService;
+import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,14 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.HttpURLConnection;
 
 /**
  * Created by greg on 29/08/17.
  */
 
-@WebServlet(value="/shield/*")
-public class ShieldController extends HttpServlet {
+@WebServlet(value="/formattedshield/*")
+public class FormattedShieldController extends HttpServlet {
     private ShieldService shieldService;
 
     @Override
@@ -28,14 +28,8 @@ public class ShieldController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String response = "";
         String[] parts = req.getRequestURI().split("/");
-        String friendlyCost = "";
-        if (parts.length == 4) {
-            friendlyCost = shieldService.getShieldByOwnerAndRepo(parts[2], parts[3]);
-        } else if (parts.length == 5) {
-            friendlyCost = shieldService.getShieldByOwnerAndRepoAndCost(parts[2], parts[3], parts[4]);
-        }
-        response = shieldService.getShieldByValue(friendlyCost);
-        resp.setHeader("Content-Type", "image/svg+xml");
+        ShieldCost shieldCost = shieldService.getShieldCostByOwnerAndRepo(parts[2], parts[3]);
+        response = new Gson().toJson(shieldCost);
         resp.getWriter().write(response);
     }
 }

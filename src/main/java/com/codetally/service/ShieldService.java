@@ -1,5 +1,7 @@
 package com.codetally.service;
 
+import com.codetally.model.ShieldCost;
+
 import java.text.DecimalFormat;
 import java.util.Currency;
 import java.util.Locale;
@@ -9,25 +11,43 @@ import java.util.Locale;
  */
 public class ShieldService {
     public String getShieldByOwnerAndRepo(String owner, String repo) {
+        ShieldCost shieldCost = getShieldCostByOwnerAndRepo(owner, repo);
+        return shieldCost.getCurrency_sign() + " " + shieldCost.getAmount() + " " + shieldCost.getMultiplier();
+    }
+    public ShieldCost getShieldCostByOwnerAndRepo(String owner, String repo) {
         RepositoryService repositoryService = new RepositoryService();
         CommitService commitService = new CommitService();
         long repositoryId = repositoryService.getSingleIdByOwnerAndRepo(owner, repo);
         float repoCost = commitService.getRepoCodecost(repositoryId);
         Currency currency = repositoryService.getCurrency(repositoryId);
-
-        return getShieldByValue(repoCost, currency);
+        return getFriendlyShieldValue(repoCost, currency);
     }
 
-    private String getShieldByValue(float repoCost, Currency currency) {
+    public ShieldCost getFriendlyShieldValue(float repoCost, Currency currency) {
+
         Locale locale = new Locale("en", currency.getCurrencyCode().substring(0, 2));
-        String localcost = currency.getSymbol(locale) + repoCost;
+
+        ShieldCost shieldCost = new ShieldCost();
+        shieldCost.setCurrency_sign(currency.getSymbol(locale));
+        shieldCost.setCurrency_abbreviation(currency.getCurrencyCode());
+
+        float roundedCost = 0f;
         if (repoCost>999999999) {
-            localcost = currency.getSymbol(locale) + roundTwoDecimals(repoCost / 1000000000) + "B";
+            roundedCost = roundTwoDecimals(repoCost / 1000000000);
+            shieldCost.setMultiplier("B");
         } else if (repoCost > 999999) {
-            localcost = currency.getSymbol(locale) + roundTwoDecimals(repoCost / 1000000) + "M";
+            roundedCost = roundTwoDecimals(repoCost / 1000000);
+            shieldCost.setMultiplier("M");
         } else if (repoCost > 999) {
-            localcost = currency.getSymbol(locale) + roundTwoDecimals(repoCost / 1000) + "K";
+            roundedCost = roundTwoDecimals(repoCost / 1000);
+            shieldCost.setMultiplier("K");
         }
+        shieldCost.setAmount(String.valueOf(roundedCost));
+        return shieldCost;
+    }
+
+    public String getShieldByValue(String localcost) {
+
         String response =
                 "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"120\" height=\"20\">" +
                 "        <linearGradient id=\"a\" x2=\"0\" y2=\"100%%\">" +
@@ -58,6 +78,8 @@ public class ShieldService {
         RepositoryService repositoryService = new RepositoryService();
         long repositoryId = repositoryService.getSingleIdByOwnerAndRepo(owner, repo);
         Currency currency = repositoryService.getCurrency(repositoryId);
-        return getShieldByValue(Float.valueOf(shieldCost), currency);
+        ShieldCost shieldCostObject = getFriendlyShieldValue(Float.valueOf(shieldCost), currency);
+
+        return shieldCostObject.getCurrency_sign() + " " + shieldCostObject.getAmount() + " " + shieldCostObject.getMultiplier();
     }
 }
