@@ -31,7 +31,7 @@ public class ShieldService {
         shieldCost.setCurrency_sign(currency.getSymbol(locale));
         shieldCost.setCurrency_abbreviation(currency.getCurrencyCode());
 
-        float roundedCost = 0f;
+        float roundedCost = repoCost;
         if (repoCost>999999999) {
             roundedCost = roundTwoDecimals(repoCost / 1000000000);
             shieldCost.setMultiplier("B");
