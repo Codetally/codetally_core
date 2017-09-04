@@ -38,13 +38,6 @@ public class CommitService {
             e.printStackTrace();
         }
     }
-    public void addCommitFiles(Commit commit) {
-        try {
-            commitRepository.addCommitFiles(commit);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     public float getRepoCodecost(long repositoryId) {
         try {
