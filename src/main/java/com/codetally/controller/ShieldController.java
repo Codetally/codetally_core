@@ -33,6 +33,7 @@ public class ShieldController extends HttpServlet {
         } else if (parts.length == 5) {
             response = shieldService.getShieldByOwnerAndRepoAndCost(parts[2], parts[3], parts[4]);
         }
+        resp.setHeader("Content-Type", "image/svg+xml");
         resp.getWriter().write(response);
     }
 }
