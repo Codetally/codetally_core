@@ -148,7 +148,7 @@ Codetally maintains a history of your prior tally calculations. History records 
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? Please [search](https://github.com/Codetally/codetally/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20) for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/Codetally/codetally/issues/new).
+Have a bug or a feature request? Please [search](https://github.com/Codetally/codetally_core/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20) for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/Codetally/codetally_core/issues/new).
 
 ## Community
 
