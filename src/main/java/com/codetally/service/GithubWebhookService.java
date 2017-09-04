@@ -52,8 +52,6 @@ public class GithubWebhookService {
             }
             logService.addSingle(logService.createLogline(LogService.INFO, "The total amount is " + chargeamount), repositoryId);
 
-            commitService.addCommitFiles(commit);
-
             long elapsedTime = System.nanoTime() - startTime;
             double elapsedSeconds = (double) elapsedTime / 1000000000.0;
             commitService.addSingle(commit, repositoryId, chargeamount, String.valueOf(elapsedSeconds));

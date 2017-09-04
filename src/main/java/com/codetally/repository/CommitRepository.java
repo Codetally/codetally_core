@@ -41,56 +41,6 @@ public class CommitRepository {
 
         connection.close();
     }
-
-    public void addCommitFiles(Commit commit) throws SQLException {
-        String query;
-
-        Connection connection = BaseRepository.getConnection();
-
-        for (String addedFile : commit.getAdded()) {
-            query = "INSERT INTO commit_files (sha, filepath, file_action ) VALUES ('" +
-                    commit.getId() + "', '" +
-                    addedFile + "', '" +
-                    0 + "')";
-            try {
-                connection.createStatement().execute(query);
-            } catch (SQLException e){
-                e.printStackTrace();
-            } finally {
-                connection.close();
-            }
-        }
-        for (String modifiedFile : commit.getModified()) {
-            query = "INSERT INTO commit_files (sha, filepath, file_action ) VALUES ('" +
-                    commit.getId() + "', '" +
-                    modifiedFile + "', '" +
-                    1 + "')";
-            try {
-                connection.createStatement().execute(query);
-            } catch (SQLException e){
-                e.printStackTrace();
-            } finally {
-                connection.close();
-            }
-        }
-        for (String removedFile : commit.getRemoved()) {
-            query = "INSERT INTO commit_files (sha, filepath, file_action ) VALUES ('" +
-                    commit.getId() + "', '" +
-                    removedFile + "', '" +
-                    2 + "')";
-            try {
-                connection.createStatement().execute(query);
-            } catch (SQLException e){
-                e.printStackTrace();
-            } finally {
-                connection.close();
-            }
-        }
-        if (!connection.isClosed()) {
-            connection.close();
-        }
-
-    }
     public float getRepoCodecost(long repositoryId) throws SQLException {
         float repoCodeCost = 0f;
         String query = "SELECT sum(codecost) FROM commits WHERE repoid = '" + repositoryId + "'";

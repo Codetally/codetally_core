@@ -33,6 +33,9 @@ public class ServletContextInitialization  implements ServletContextListener {
             System.out.println("Creating Table repo");
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS repo (repoid bigserial primary key,owner character varying(255),repo_name character varying(1024),codecost numeric(19,2),currency_code character varying(3),repo_url text)");
             System.out.println("Create table complete.");
+            // First time use of historical system. In this case, dropping previously created commit_files table.
+            stmt.executeUpdate("DROP TABLE IF EXISTS commit_files");
+            System.out.println("Drop table commit_files is complete.");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
