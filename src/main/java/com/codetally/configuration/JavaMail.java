@@ -1,9 +1,6 @@
 package com.codetally.configuration;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
@@ -16,15 +13,19 @@ public class JavaMail {
 
         //Get the session object
         Properties properties = System.getProperties();
-        properties.setProperty("mail.smtp.host", "smtp.gmail.com");
-        properties.setProperty("mail.smtp.username", "gemartin@gmail.com");
-        properties.setProperty("mail.smtp.password", "hockey");
-        properties.setProperty("mail.smtp.host", "smtp.gmail.com");
-        properties.setProperty("mail.smtp.auth", "true");
-        properties.setProperty("mail.smtp.socketFactory.port", "465");
-        properties.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        properties.setProperty("mail.smtp.port","465");
-        Session session = Session.getDefaultInstance(properties);
+
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+
+
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication("gemartin@gmail.com", "hockey");
+                    }
+                });
 
         //compose the message
         try {
