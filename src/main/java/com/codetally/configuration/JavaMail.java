@@ -20,7 +20,7 @@ public class JavaMail {
         properties.put("mail.smtp.port", "587");
 
 
-        Session session = Session.getInstance(props,
+        Session session = Session.getInstance(properties,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication("gemartin@gmail.com", "hockey");
