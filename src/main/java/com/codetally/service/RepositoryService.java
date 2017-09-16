@@ -1,6 +1,7 @@
 package com.codetally.service;
 
 import com.codetally.configuration.GithubConfiguration;
+import com.codetally.configuration.JavaMail;
 import com.codetally.model.github.Repository;
 import com.codetally.repository.RepoRepository;
 import com.google.gson.Gson;
@@ -42,6 +43,8 @@ public class RepositoryService {
         try {
             //synchAllByOwnername should probably be exposed to the end user as an explicit action
             synchAllByOwnername(ownername);
+            //Now would be a good time to mail.
+            JavaMail.SendMail(ownername);
             List<Repository> repositoryList = repoRepository.getAllByOwnername(ownername);
             return new Gson().toJson(repositoryList);
         } catch (Exception e) {
