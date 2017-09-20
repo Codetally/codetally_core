@@ -44,9 +44,9 @@ public class MeService {
 
         try {
             String urlParameters = GithubConfiguration.client_id
-                    + "=" + GithubConfiguration.webapp_clientid
+                    + "=" + GithubConfiguration.clientid
                     + "&" + GithubConfiguration.client_secret
-                    + "=" + GithubConfiguration.webapp_clientsecret
+                    + "=" + GithubConfiguration.clientsecret
                     + "&" + GithubConfiguration.code
                     + "=" + code;
             String request = GithubConfiguration.access_token_url;

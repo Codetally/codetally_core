@@ -56,9 +56,9 @@ public class RepositoryService {
     private void synchAllByOwnername(String ownername) {
         try {
             String urlParameters = GithubConfiguration.client_id
-                    + "=" + GithubConfiguration.webapp_clientid
+                    + "=" + GithubConfiguration.clientid
                     + "&" + GithubConfiguration.client_secret
-                    + "=" + GithubConfiguration.webapp_clientsecret;
+                    + "=" + GithubConfiguration.clientsecret;
 
             String paging = "page=1&per_page=100";
 

@@ -4,8 +4,7 @@ package com.codetally.configuration;
  * Created by greg on 25/06/17.
  */
 public class GithubConfiguration {
-    public static final String webapp_clientid = "5618700d534bdfd9610b";
-    public static final String webapp_clientsecret = "117c8e057ff0d8c31f6ff5155c149d26def8e2fc";
+
     public static final String clientid = "Iv1.28ff997c607a6195";
     public static final String clientsecret = "f4ad003f023f6109a85e9cf339704777a4267c69";
 
