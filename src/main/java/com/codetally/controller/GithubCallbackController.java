@@ -22,6 +22,8 @@ import java.util.Map;
 public class GithubCallbackController extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //try to detect if the app has been installed. If not, redirect back to https://github.com/apps/codetally/installations/new
         Map<String, String> mapQuery = queryToMap(req.getQueryString());
 
         MeService meService = new MeService();

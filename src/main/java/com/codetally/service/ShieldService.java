@@ -12,7 +12,7 @@ import java.util.Locale;
 public class ShieldService {
     public String getShieldByOwnerAndRepo(String owner, String repo) {
         ShieldCost shieldCost = getShieldCostByOwnerAndRepo(owner, repo);
-        return shieldCost.getCurrency_sign() + " " + shieldCost.getAmount() + " " + shieldCost.getMultiplier();
+        return shieldCost.getCurrency_sign() + shieldCost.getAmount() + " " + shieldCost.getMultiplier();
     }
     public ShieldCost getShieldCostByOwnerAndRepo(String owner, String repo) {
         RepositoryService repositoryService = new RepositoryService();
