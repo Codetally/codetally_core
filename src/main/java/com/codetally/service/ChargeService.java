@@ -72,7 +72,8 @@ public class ChargeService {
                 urlconnection.disconnect();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+		// common log spam. oftn repos will lack  codetally file. only way to defend is to create one on the fly...
+            //e.printStackTrace();
         }
     }
 
