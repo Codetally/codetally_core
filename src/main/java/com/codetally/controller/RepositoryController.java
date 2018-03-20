@@ -27,7 +27,7 @@ public class RepositoryController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String response = "";
         String[] parts = req.getRequestURI().split("/");
-        response = repositoryService.getAllByOwnername(parts[2]);
+        response = repositoryService.getAllByOwnername(parts[UrlPart.OWNER]);
         resp.getWriter().write(response);
     }
 }

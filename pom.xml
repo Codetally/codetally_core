@@ -5,7 +5,7 @@
     <groupId>com.codetally</groupId>
     <artifactId>codetally</artifactId>
     <packaging>war</packaging>
-    <version>1.0</version>
+    <version>1.3</version>
     <name>Codetally Web Application</name>
     <url>http://maven.apache.org</url>
 
@@ -51,7 +51,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>ROOT</finalName>
+        <finalName>codetally</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

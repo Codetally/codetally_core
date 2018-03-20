@@ -28,7 +28,7 @@ public class FormattedShieldController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String response = "";
         String[] parts = req.getRequestURI().split("/");
-        ShieldCost shieldCost = shieldService.getShieldCostByOwnerAndRepo(parts[2], parts[3]);
+        ShieldCost shieldCost = shieldService.getShieldCostByOwnerAndRepo(parts[UrlPart.OWNER], parts[UrlPart.REPO]);
         response = new Gson().toJson(shieldCost);
         resp.getWriter().write(response);
     }

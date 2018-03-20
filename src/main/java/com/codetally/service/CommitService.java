@@ -57,6 +57,9 @@ public class CommitService {
 
         try {
             List<Commit> commitList = commitRepository.getCommits(repositoryId, 1);
+            if (commitList.size() < 1) {
+               return new Gson().toJson(calculationResult);
+            }
             Commit commit = commitList.get(0);
             calculationResult = Commit2CalculationResult(commit);
             calculationResult.setHtmlUrl(repository.getHtmlUrl());

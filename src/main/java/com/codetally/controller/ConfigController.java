@@ -27,7 +27,7 @@ public class ConfigController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String response = "";
         String[] parts = req.getRequestURI().split("/");
-        response = chargeService.getChargeConfig(parts[2], parts[3]);
+        response = chargeService.getChargeConfig(parts[UrlPart.OWNER], parts[UrlPart.REPO]);
         resp.getWriter().write(response);
     }
 }

@@ -29,10 +29,10 @@ public class ShieldController extends HttpServlet {
         String response = "";
         String[] parts = req.getRequestURI().split("/");
         String friendlyCost = "";
-        if (parts.length == 4) {
-            friendlyCost = shieldService.getShieldByOwnerAndRepo(parts[2], parts[3]);
-        } else if (parts.length == 5) {
-            friendlyCost = shieldService.getShieldByOwnerAndRepoAndCost(parts[2], parts[3], parts[4]);
+        if (parts.length == UrlPart.PARTSWITHOUTCOST) {
+            friendlyCost = shieldService.getShieldByOwnerAndRepo(parts[UrlPart.OWNER], parts[UrlPart.REPO]);
+        } else if (parts.length == UrlPart.PARTSWITHCOST) {
+            friendlyCost = shieldService.getShieldByOwnerAndRepoAndCost(parts[UrlPart.OWNER], parts[UrlPart.REPO], parts[UrlPart.COST]);
         }
         response = shieldService.getShieldByValue(friendlyCost);
         resp.setHeader("Content-Type", "image/svg+xml");
