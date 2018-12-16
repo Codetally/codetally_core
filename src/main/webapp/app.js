@@ -15,7 +15,7 @@ DemoApp.factory('DataResource', function($resource) {
 DemoApp.controller('DemoCtrl', function($scope, $routeParams, $location, DataResource, $route, $rootScope, $interval) {
 
 
-	$interval.cancel($rootScope.interval_promise);
+//	$interval.cancel($rootScope.interval_promise);
 
 	if (!$rootScope.authenticated) {
 		DataResource.get({datatype:"me"}, function(data) {
@@ -43,7 +43,7 @@ DemoApp.controller('DemoCtrl', function($scope, $routeParams, $location, DataRes
         			$rootScope.current_shield_src = "/shield/" + $rootScope.username + "/" + $rootScope.repo + "?" + new Date().getTime();
         	});
 		}
-		$rootScope.interval_promise = $interval(currentData, 5000);
+//		$rootScope.interval_promise = $interval(currentData, 5000);
 		currentData();
 		if ($rootScope.action!="") {
     		switch ($rootScope.action) {
