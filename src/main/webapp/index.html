@@ -45,7 +45,10 @@
 	<div class="row">
 		<div ng-show="authenticated" class="col-sm-3 col-md-2 sidebar" ng-controller="DemoCtrl">
 			<ul class="nav nav-sidebar list-group" ng-repeat="repo in repositories" class="list-group">
-				<li ng-class="{active:isActive(repo.url)}"><a href="#{{repo.url}}"><i class="fa fa-github-square"></i> {{repo.name}}</a></li>
+				<li ng-class="{active:isActive(repo.url)}">
+					<a href="#{{repo.url}}"><i class="fa fa-github-square"></i> {{repo.name}}</a>
+					<a href="https://wakatime.com/oauth/authorize?client_id=JajUYSst18OQj84xq58tSoou&response_type=code&redirect_uri=https://www.codetally.com/callback&scope=read_logged_time&state={{repo.name}}"><i class="fa fa-cog"></i></a>
+				</li>
 			</ul>
 		</div>
 		<div ng-class="{'col-md-10': authenticated , 'col-md-offset-2': authenticated, 'col-md-12': !authenticated, 'main':true}" ng-view>
